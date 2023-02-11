@@ -24,7 +24,6 @@ new direction[][16] = {
   "East",
   "North-East"
 };
-new amx_nextmap
 
 public plugin_init() 
 { 
@@ -34,8 +33,7 @@ public plugin_init()
 		VERSION,	//: 1.0
 		AUTHOR		//: teylo
 	);
-	//amx_nextmap = get_cvar_pointer("amx_nextmap")
-	//set_task(10.0,"changenextmap");
+
 	// Verify existing location
 	LoadLocations() 
 	// Get existing points inside the map perimeter
@@ -45,7 +43,7 @@ public plugin_init()
 	// Get the min&max x,y,z coordinates of the map
 	CalculateMinMax()
 
-	
+
 } 
 
 public CalculateMinMax()
@@ -71,9 +69,9 @@ public CalculateMinMax()
 		maxz = floatmax(maxz,EntityOrigin[2])
    
 	}
-	server_print("[Loc Creator] Min x : %.1f || Max x : %.1f",minx,maxx)
-	server_print("[Loc Creator] Min y : %.1f || Max y : %.1f",miny,maxy)
-	server_print("[Loc Creator] Min z : %.1f || Max z : %.1f",minz,maxz)
+	//server_print("say Min x : %.1f || Max x : %.1f",minx,maxx)
+	//server_print("say Min y : %.1f || Max y : %.1f",miny,maxy)
+	//server_print("say Min z : %.1f || Max z : %.1f",minz,maxz)
 
 	calculate_locs_positions(minx,maxx,miny,maxy,minz,maxz)
 }
@@ -101,20 +99,11 @@ public LoadLocations()
 
 	if (handle)
 	{
-		server_print("[Loc Creator] Map location file already existing: %s", mapFile)
-		//set_task(10.0,"changenextmap");
+		server_print("Map location file already existing: %s", mapFile)
 		StopPlugin();
 		return false;
 	}
 
-}
-
-public changenextmap()
-{
-	new nextMap[32];
-	get_pcvar_string(amx_nextmap,nextMap,charsmax(nextMap)-1);
-	server_print("[Loc Creator] Map changed to %s",nextMap);
-	server_cmd("amx_map %s",nextMap);
 }
 
 // ===== PLUGIN STOP ==============
@@ -144,7 +133,6 @@ public calculate_locs_positions(min_x , max_x , min_y , max_y , min_z ,max_z)
 		grid_count = 3;
  	}
  	new grid_height = floatsub(max_z,min_z) / grid_count;
-	//server_print("A!!! grid_count: %d",grid_count);
 	//server_print("A!!! grid_height %f",grid_height);
 	// Calculate BIG GRID width and height
 	new big_grid_width = floatsub(max_x,min_x) / BIG_GRID_SIZE;
@@ -201,10 +189,6 @@ public calculate_locs_positions(min_x , max_x , min_y , max_y , min_z ,max_z)
 						// get z grid position and write the buffer within the iteration
 						// loc format : Name of the zone # x # y # z #
 						new direction_string_z[32];
-						if (grid_count == 1) {
-								format(buffer, 16384, "%s%s#%.1f#%.1f#%.1f#", buffer, direction_and_zone_string,center_x, center_y, center_z);
-								//server_print("%s%s#%.1f#%.1f#%.1f#",  direction_and_zone_string, direction_string_z,center_x, center_y, center_z);
-						}
 						if (grid_count == 2) {
 	  						if (m == 0) {
 								format(direction_string_z, 32, " Down");
@@ -247,14 +231,11 @@ public calculate_locs_positions(min_x , max_x , min_y , max_y , min_z ,max_z)
   	format(file_path, 127, "locs/%s.loc", mapName);
 
   	if(file_exists(file_path) != 1) { 
-		server_print("[Loc Creator] Creating map file: %s.loc", mapName)
-		write_file(file_path,buffer)
-		return 1;
+		server_print("Creating map file: %s.loc", mapName)
+    	write_file(file_path,buffer)
+    	return 1;
   	} else {
-		server_print("[Loc Creator] Map file: %s.loc not written", mapName)
-		return 0;
+		server_print("Map file: %s.loc not written", mapName)
+    	return 0;
   	} 
-
 }
-
-
