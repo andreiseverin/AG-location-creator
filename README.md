@@ -6,7 +6,7 @@
  
  ## Database download - over 3100 maps
  
- Go to [Releases](https://github.com/andreiseverin/AG-location-creator/releases/tag/v1.0) and download the database that work with your client.
+ Go to [Releases](https://github.com/andreiseverin/AG-location-creator/releases/tag/v1.0) and download the database that works with your client.
  
  ## How it works
  
