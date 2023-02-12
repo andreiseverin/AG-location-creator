@@ -4,6 +4,10 @@
  
  This plugin aims to create location files for all the maps that don't have one. The loc files are usefull in Adrenaline Gamer to share your location with your team mates. Normally, all the location have been done by hand using `addloc name` in the old ag 6.6 client. If you need a certain loc for a map, just install this plugin and lanch that map. A location will be automatically created in the `ag/locs` folder.
  
+ ## Database download - over 3100 maps
+ 
+ Go to [Releases](https://github.com/andreiseverin/AG-location-creator/releases/tag/v1.0) and download the database that work with your client.
+ 
  ## How it works
  
  The plugin recovers all the playable points on the map whith a distance of 10.0 between every point. These points are going to be mapped into a (x,y,z) coordinate system. The recovered coordinates will be compared to get the `min` and `max` for each axys.
