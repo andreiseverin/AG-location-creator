@@ -11,7 +11,7 @@
  ## How it works
  
  The plugin recovers all the playable points on the map whith a distance of 10.0 between every point. These points are going to be mapped into a (x,y,z) coordinate system. The recovered coordinates will be compared to get the `min` and `max` for each axys.
- Once we have the borders, we are going to split the region into a 3x3 big grid. Each big grid will be names after compass directions: `North` , `South`, `West`, `East`, `North-West`, `North-East`, `South-West`, `South-East` and `Center`. After the BIG GRID system, we resplit each grid into a 3x3 SMALL GRID SYSTEM, numbered from `1` to `9`. 
+ Once we have the borders, we are going to split the region into a 3x3 big grid. Each big grid will be named after the compass directions: `North` , `South`, `West`, `East`, `North-West`, `North-East`, `South-West`, `South-East` and `Center`. After the BIG GRID system, we resplit each grid into a 3x3 SMALL GRID SYSTEM, numbered from `1` to `9`. 
  Here's an example for the map `boot_camp`:
  
  ![boot_camp](https://i.imgur.com/PiCLhf3.png)
